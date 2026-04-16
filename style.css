@@ -97,3 +97,20 @@ h1 {
     font-weight: bold;
     font-size: 0.9rem;
 }
+/* Alignment Properties */
+.gallery {
+    justify-content: center;
+    align-content: start;
+}
+
+/* Control individual item alignment */
+.gallery-item.featured {
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+/* Add a container for the entire gallery */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
