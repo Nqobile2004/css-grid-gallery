@@ -167,3 +167,39 @@ h1 {
         grid-column: span 2;
     }
 }
+/* Task 4.1: Subgrid Example */
+.stats-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.stats-content h3 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.8;
+}
