@@ -3,124 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Grid Magazine</title>
+    <title>Daily Grid - Magazine</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
             background: #f5f5f5;
-            padding: 20px;
         }
-        
-               /* Requirement 1: Grid Template Areas - Mobile First */
+
+        /* Requirement 1: Base Mobile Layout 375px+ */
         .magazine-grid {
             display: grid;
-            gap: 20px;
-            min-height: 100vh;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            
-            grid-template-areas: 
+            grid-template-areas:
                 "header"
                 "main"
                 "sidebar"
                 "footer";
             grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
         }
 
-        .site-header { 
-            grid-area: header; 
-            background: #333; 
-            color: white; 
-            padding: 1rem 2rem;
-            border-radius: 8px;
-        }
-
-        .site-header nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .site-header ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .site-header a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .main-content { 
-            grid-area: main; 
-        }
-
-        .main-content h2 {
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-
+        .site-header { grid-area: header; background: #fff; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .main-nav a { margin-left: 1rem; text-decoration: none; color: #333; }
+        
+        .articles { grid-area: main; }
+        .featured-article { background: #fff; padding: 1.5rem; margin-bottom: 1rem; }
+        
+        /* Requirement 3: Nested Grid for Cards */
         .articles-grid {
             display: grid;
-            gap: 20px;
             grid-template-columns: 1fr;
-            grid-auto-flow: dense;
+            gap: 1rem;
         }
-
-        .article-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: grid;
-            gap: 10px;
-        }
-
-        .article-card img {
-            width: 100%;
-            border-radius: 4px;
-        }
-
-        .sidebar { 
-            grid-area: sidebar; 
-            background: white; 
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .promo-badge {
+        .card { background: #fff; padding: 1rem; }
+        
+        /* Requirement 5: z-index layering */
+        .sidebar { grid-area: sidebar; background: #fff; padding: 1.5rem; position: relative; }
+        .newsletter-badge {
             position: absolute;
             top: -10px;
-            right: 20px;
-            z-index: 10;
-            background: #ff6b6b;
+            right: -10px;
+            background: #e74c3c;
             color: white;
-            padding: 5px 12px;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .site-footer { 
-            grid-area: footer; 
-            background: #222; 
+        /* Requirement 3 + 4: Footer Nested Grid */
+        .site-footer {
+            grid-area: footer;
+            background: #333;
             color: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2rem 1rem;
             display: grid;
-            gap: 30px;
             grid-template-columns: 1fr;
+            gap: 2rem;
             justify-items: center;
             text-align: center;
         }
@@ -128,10 +73,10 @@
         /* Requirement 2: Tablet Layout 768px+ */
         @media (min-width: 768px) {
             .magazine-grid {
-                grid-template-areas: 
-                    "header  header"
-                    "main    sidebar"
-                    "footer  footer";
+                grid-template-areas:
+                    "header header"
+                    "main   sidebar"
+                    "footer footer";
                 grid-template-columns: 2fr 1fr;
             }
             
@@ -149,10 +94,10 @@
         /* Requirement 2: Desktop Layout 1024px+ */
         @media (min-width: 1024px) {
             .magazine-grid {
-                grid-template-areas: 
-                    "header  header  header"
-                    "main    main    sidebar"
-                    "footer  footer  footer";
+                grid-template-areas:
+                    "header header header"
+                    "main   main   sidebar"
+                    "footer footer footer";
                 grid-template-columns: 1fr 1fr 1fr;
             }
             
@@ -160,3 +105,55 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+    </style>
+</head>
+<body>
+    <div class="magazine-grid">
+        <header class="site-header">
+            <div class="logo">Daily Grid</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="#">Articles</a>
+                <a href="#">About</a>
+            </nav>
+        </header>
+
+        <main class="articles">
+            <article class="featured-article">
+                <h1>Featured: CSS Grid Changes Everything</h1>
+                <p>This is the main featured story for the magazine layout.</p>
+            </article>
+
+            <div class="articles-grid">
+                <article class="card"><h2>Article 1</h2><p>Content here.</p></article>
+                <article class="card"><h2>Article 2</h2><p>Content here.</p></article>
+                <article class="card"><h2>Article 3</h2><p>Content here.</p></article>
+                <article class="card"><h2>Article 4</h2><p>Content here.</p></article>
+                <article class="card"><h2>Article 5</h2><p>Content here.</p></article>
+                <article class="card"><h2>Article 6</h2><p>Content here.</p></article>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="newsletter-badge">NEW</div>
+            <h3>Newsletter</h3>
+            <p>Subscribe for updates.</p>
+        </aside>
+
+        <footer class="site-footer">
+            <div class="footer-about">
+                <h4>About</h4>
+                <p>Daily Grid Magazine</p>
+            </div>
+            <div class="footer-resources">
+                <h4>Resources</h4>
+                <p>Grid Guide</p>
+            </div>
+            <div class="footer-connect">
+                <h4>Connect</h4>
+                <p>Social Links</p>
+            </div>
+        </footer>
+    </div>
+</body>
+    </html>
