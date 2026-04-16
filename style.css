@@ -114,3 +114,18 @@ h1 {
     max-width: 1200px;
     margin: 0 auto;
 }
+/* Task 3.1: Alignment Properties */
+.gallery {
+    justify-content: center;
+    align-content: start;
+}
+
+.gallery-item.featured {
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
