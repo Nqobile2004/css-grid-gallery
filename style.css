@@ -61,3 +61,18 @@ h1 {
 .gallery-item:hover .overlay {
     opacity: 1;
 }
+/* Part 2: Task 2.1 - Featured Item with Grid Area */
+/* Make the featured item span multiple cells */
+.gallery-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Add a special style for the featured item */
+.gallery-item.featured .overlay {
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 30px 15px 15px;
+    opacity: 1;
+}
