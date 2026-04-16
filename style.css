@@ -98,11 +98,14 @@ h1 {
     font-size: 0.9rem;
 }
 /* Alignment Properties */
-.gallery {
+
+    .gallery {
     justify-content: center;
     align-content: start;
+    grid-auto-flow: dense;  /* NEW: This is the dense packing */
 }
 
+}
 /* Control individual item alignment */
 .gallery-item.featured {
     justify-self: stretch;
@@ -197,6 +200,50 @@ h1 {
 .stat-number {
     font-size: 24px;
     font-weight: bold;
+}
+/* Task 4.2: Dense Packing + Floating Card */
+.floating-card {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 100;
+    text-align: center;
+    animation: slideIn 0.5s ease;
+}
+
+.floating-card h4 {
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.floating-card button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.floating-card button:hover {
+    transform: scale(1.05);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .stat-label {
